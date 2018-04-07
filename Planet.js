@@ -1,4 +1,3 @@
-<script>
 var context = document.getElementById('content').getContext('2d');
 
 var width = window.innerWidth;
@@ -40,5 +39,3 @@ function update(t) {
 }
 
 window.requestAnimationFrame(update);
-
-  </script>
