@@ -1,5 +1,5 @@
 <script>
 
-document.getElementById("test").innerHTML = "Hello World!"
+document.getElementById("testp").innerHTML = 'Hello World!'
 
 </script>
