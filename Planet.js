@@ -12,7 +12,7 @@ context.lineWidth = 0.4;
 context.strokeStyle = 'rgba(0, 0, 0, 0.4)';
 
 var projection = d3.geoOrthographic()
-  .scale(0.5 * size)
+  .scale(0.6 * size)
   //.translate([0.5 * width, 0.5 * height]);
 
 var geoGenerator = d3.geoPath()
