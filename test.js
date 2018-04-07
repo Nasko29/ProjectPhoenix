@@ -1,5 +1,8 @@
 <script>
 
-document.getElementById("testp").innerHTML = 'Hello World!'
+function testparagraph()
+{
+	document.getElementById("testp").innerHTML = 'Hello World!';
+}
 
 </script>
