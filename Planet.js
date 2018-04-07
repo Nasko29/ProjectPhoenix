@@ -7,6 +7,9 @@ var size = d3.min([width, height]);
 // d3.select('#content')
 //   .attr('width', width + 'px')
 //   .attr('height', height + 'px');
+d3.select('#content')
+  .attr('width', '100%')
+  .attr('height', '100%');
 
 context.lineWidth = 0.4;
 context.strokeStyle = 'rgba(0, 0, 0, 1.0)';
