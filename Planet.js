@@ -4,9 +4,9 @@ var width = window.innerWidth;
 var height = window.innerHeight;
 var size = d3.min([width, height]);
 
-d3.select('#content')
-  .attr('width', width + 'px')
-  .attr('height', height + 'px');
+// d3.select('#content')
+//   .attr('width', width + 'px')
+//   .attr('height', height + 'px');
 
 context.lineWidth = 0.4;
 context.strokeStyle = 'rgba(0, 0, 0, 1.0)';
