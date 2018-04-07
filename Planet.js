@@ -1,12 +1,12 @@
 var context = document.getElementById('content').getContext('2d');
 
-var width = window.innerWidth;
-var height = window.innerHeight;
+var width = 0.7*window.innerWidth;
+var height = 0.7*window.innerHeight;
 var size = d3.min([width, height]);
 
 d3.select('#content')
-  .attr('width', 0.7*width + 'px')
-  .attr('height', 0.6*height + 'px');
+  .attr('width', width + 'px')
+  .attr('height', height + 'px');
 
 context.lineWidth = 0.4;
 context.strokeStyle = 'rgba(0, 0, 0, 0.4)';
