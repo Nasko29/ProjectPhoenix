@@ -6,7 +6,7 @@ var size = d3.min([width, height]);
 
 d3.select('#content')
   .attr('width', 0.7*width + 'px')
-  .attr('height', 0.8*height + 'px');
+  .attr('height', 0.6*height + 'px');
 
 context.lineWidth = 0.4;
 context.strokeStyle = 'rgba(0, 0, 0, 0.4)';
@@ -23,6 +23,13 @@ var geojson = {type: 'Feature', geometry: {type: 'LineString', coordinates: []}}
 function rndLon() {return -180 + Math.random() * 360;}
 function rndLat() {return -90 + Math.random() * 180;}
 function addPoint() {geojson.geometry.coordinates.push([rndLon(), rndLat()])}
+
+// Longitudes go from -180 to +180
+
+
+// Latitudes go from -90 to +90
+
+
 
 function update(t) {
   if(geojson.geometry.coordinates.length < 6000)
