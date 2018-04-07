@@ -9,7 +9,7 @@ d3.select('#content')
   .attr('height', height + 'px');
 
 context.lineWidth = 0.4;
-context.strokeStyle = 'rgba(255, 255, 255, 0.6)';
+context.strokeStyle = 'rgba(0, 0, 0, 1.0)';
 
 var projection = d3.geoOrthographic()
   .scale(0.45 * size)
