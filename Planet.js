@@ -10,7 +10,7 @@ var height = 0.7*window.innerHeight;
 var size = d3.min([width, height]);
 
 d3.select('#content')
-  .attr('height', height + 'px');
+  .attr('height', height + 'px')
   .attr('width', width + 'px')
 
 
