@@ -6,10 +6,10 @@ var size = d3.min([width, height]);
 
 d3.select('#content')
   .attr('width', 0.7*width + 'px')
-  .attr('height', 0.7*height + 'px');
+  .attr('height', 1.0*height + 'px');
 
 context.lineWidth = 0.4;
-context.strokeStyle = 'rgba(0, 0, 0, 0.6)';
+context.strokeStyle = 'rgba(0, 0, 0, 0.4)';
 
 var projection = d3.geoOrthographic()
   .scale(0.45 * size)
