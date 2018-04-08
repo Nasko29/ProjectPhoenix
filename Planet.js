@@ -1,12 +1,12 @@
 
 // GetContext
-var context = document.getElementById('content').getContext('2d');
+var context = document.getElementById('content1').getContext('2d');
 
 // Set Sizing
 var width = 0.75*window.innerWidth;
 var height = 0.75*window.innerHeight;
 var size = d3.min([width, height]);
-d3.select('#content')
+d3.select('#content1')
   .attr('height', 1.2*height + 'px')
   .attr('width', 1.2*width + 'px') 
 
@@ -42,7 +42,7 @@ function drawPoints()
 function drawPoint(x,y,r)
 {
   // draw line
-  var context = document.getElementById('content').getContext('2d');
+  var context = document.getElementById('content1').getContext('2d');
   context.lineWidth = 1.0;
   context.strokeStyle = 'rgba(1, 0, 0, 1.0)';
   var line = {type: 'Feature', geometry: {type: 'Point',coordinates: [x,y]}}; 
