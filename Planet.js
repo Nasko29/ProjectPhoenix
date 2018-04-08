@@ -4,16 +4,13 @@ var context = document.getElementById('content').getContext('2d');
 
 
 // Sizing
-var width = 0.7*window.innerWidth;
-var height = 0.7*window.innerHeight;
+var width = 0.9*window.innerWidth;
+var height = 0.9*window.innerHeight;
 var size = d3.min([width, height]);
 
 d3.select('#content')
   .attr('height', height + 'px')
   .attr('width', width + 'px') 
-
-context.lineWidth = 0.4;
-context.strokeStyle = 'rgba(0, 0, 0, 0.4)';
 
 var projection = d3.geoOrthographic()
   .scale(0.4 * size)
@@ -23,39 +20,68 @@ var geoGenerator = d3.geoPath()
   .projection(projection)
   .context(context);
 
-// Lattitudes from -180 to +180
-// nlats = 24;
-// for (i = 0; i < nlats; i++) 
-// { 
-//     var line = {type: 'Feature', geometry: {type: 'LineString', coordinates: []}};
-//     ratio = i/nlats;
-//     lat  = -180 + (360*ratio);
-//     long1 = -90;
-//     long2 = +90;
-//     line.geometry.coordinates.push([long1,lat]);
-// }
 
-// Longitudes from -90 to +90
+function drawPlanet(rotangle)
+{
+  context.lineWidth = 1.0;
+  context.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+
+  // Longitudes
+  nlong = 40;
+  for (i = 0; i < nlong; i++) 
+  { 
+      // find longitudes
+      ratio = i/nlong;
+      long  = -90.0 + (360.0*ratio);
+
+      if(true)// long+rotangle > -45 && long+rotangle < 45)
+      {
+        // draw line
+        var line = {type: 'Feature', geometry: {type: 'LineString', coordinates: [[long,-90],[long,90]]}}; 
+        context.beginPath();
+        geoGenerator(line);
+        context.stroke();
+      }
+  }
+
+  // Latitudes
+  nlat = nlong;
+  nlong = 100
+  for (j = 0; j < nlat; j++) 
+  { 
+    longspan = 360.0/nlong;
+    ratio = j/nlat;
+    lat = -90.0 + (180.0*ratio);
+
+    for (i = 0; i < nlong; i++) 
+    { 
+        long1 = -90 + (i*longspan);
+        long2 = -90 + (i*longspan)+ longspan;
+        midlong = (long1 + long2) / 2;
+
+        if(true)// midlong+rotangle > -45 && midlong+rotangle < 45)
+        {
+          // draw line
+          var line = {type: 'Feature', geometry: {type: 'LineString', coordinates: [[long1,lat],[long2,lat]]}}; 
+          context.beginPath();
+          geoGenerator(line);
+          context.stroke();
+        }
+    }
+  }
+}
 
 
-
-var geojson = {type: 'Feature', geometry: {type: 'LineString', coordinates: []}};
-
-function rndLon() {return -180 + Math.random() * 360;}
-function rndLat() {return -90 + Math.random() * 180;}
-function addPoint() {geojson.geometry.coordinates.push([rndLon(), rndLat()])}
 
 function update(t) 
 {
-  if(geojson.geometry.coordinates.length < 6000)
-    addPoint();
-
-  projection.rotate([t / 1000]);
+  rotangle = t / 200
+  projection.rotate([rotangle]);
+  // document.getElementById("reporter").innerHTML = rotangle
 
   context.clearRect(0, 0, width, height);
-  context.beginPath();
-  geoGenerator(geojson);
-  context.stroke();
+
+  drawPlanet(rotangle);
 
   window.requestAnimationFrame(update);
 }
